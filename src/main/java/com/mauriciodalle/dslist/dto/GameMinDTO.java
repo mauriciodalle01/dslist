@@ -1,6 +1,7 @@
 package com.mauriciodalle.dslist.dto;
 
 import com.mauriciodalle.dslist.entities.Game;
+import com.mauriciodalle.dslist.projections.GameMinProjection;
 
 public class GameMinDTO {
 	
@@ -8,7 +9,7 @@ public class GameMinDTO {
     private String title;
     private Integer year;
     private String imgUrl;
-    private String shortDscription;
+    private String shortDescription;
 
     public GameMinDTO() {
     }
@@ -18,9 +19,17 @@ public class GameMinDTO {
 		title = entity.getTitle();
 		year = entity.getYear();
 		imgUrl = entity.getImgUrl();
-		shortDscription = entity.getShortDscription();
+		shortDescription = entity.getShortDescription();
 	}
-
+	
+	public GameMinDTO(GameMinProjection projection) {
+		id = projection.getId();
+		title = projection.getTitle();
+		year = projection.getYear();
+		imgUrl = projection.getImgUrl();
+		shortDescription = projection.getShortDescription();
+	}
+		
 	public Long getId() {
 		return id;
 	}
@@ -37,7 +46,7 @@ public class GameMinDTO {
 		return imgUrl;
 	}
 
-	public String getShortDscription() {
-		return shortDscription;
+	public String getShortDescription() {
+		return shortDescription;
 	}
 }
